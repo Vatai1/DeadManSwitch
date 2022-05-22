@@ -1,9 +1,11 @@
 from tkinter import *
 from time import time
 from telethon import TelegramClient
+import configparser
 
-api_id = 19235970
-api_hash = '053b368ce3f09179fe82b1b9a5020092'
+cfg=configparser.ConfigParser()
+cfg.read("config.ini")
+telegramCfg=cfg["TELEGRAM"]
 
 def clicked():
     return 0
@@ -45,7 +47,7 @@ class DeadMen:
 
     def sendDeadMessageTelegram(self):
         for i in self.contacts:
-            with TelegramClient('anon', api_id, api_hash) as client:
+            with TelegramClient('anon', telegramCfg['TELEGRAM_API_ID'], telegramCfg['TELEGRAM_API_HASH']) as client:
                 client.loop.run_until_complete(client.send_message(i, 'Чего делош?'))
 
 
@@ -60,9 +62,9 @@ window.geometry('700x300')
 lbl = Label(window, text="Dead Men Switch", font=("Times New Roman Bold", 50))
 lbl.grid(column=0, row=0)
 
-text = Entry();
+text = Entry()
 
-btn_setTimer = Button(window, text='setTimer', command=)
+btn_setTimer = Button(window, text='setTimer')
 
 
 
