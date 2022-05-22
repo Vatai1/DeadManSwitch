@@ -1,5 +1,5 @@
 anon.session
-config
+config.ini
 .idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
